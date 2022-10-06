@@ -27,9 +27,9 @@ postForm.addEventListener('submit', async (e) => {
 
     if (error) {
         displayError();
+    } else {
+        location.assign('/');
     }
-
-    // console.log('form submitted');
 });
 
 /* Display */
