@@ -28,3 +28,6 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+export async function createPost(post) {
+    return await client.from('reddits').insert(post).single();
+}

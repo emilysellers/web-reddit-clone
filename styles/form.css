@@ -59,7 +59,7 @@ form button {
     border: 0;
     font-weight: bold;
     color: white;
-    background-color: grey;
+    background-color: rgb(109, 109, 109);
     border-radius: 15%;
 }
 
@@ -68,5 +68,10 @@ form button:disabled {
 }
 
 main {
-    background-color: rgb(234, 212, 178);
+    background-color: rgb(249, 225, 189);
+}
+footer {
+    background-color: rgb(249, 225, 189);
+    text-decoration: none;
+    font-size: 0.8em;
 }
