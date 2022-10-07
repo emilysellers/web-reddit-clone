@@ -6,6 +6,7 @@ import { getPost, getUser } from '../fetch-utils.js';
 /* DOM */
 const errorDisplay = document.getElementById('error-display');
 const postDescription = document.getElementById('post-description');
+const addComment = document.getElementById('add-comment');
 
 /* State */
 let post = null;
@@ -31,6 +32,8 @@ window.addEventListener('load', async () => {
         displayPost();
     }
 });
+
+// ADD COMMENT EVENT LISTENER
 
 /* Display */
 function displayError() {
