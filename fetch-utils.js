@@ -39,3 +39,9 @@ export async function getPosts() {
 export async function getPost(id) {
     return await client.from('reddits').select('*').eq('id', id).single();
 }
+
+export async function createComment(comment) {
+    return client.from('comments').insert(comment).single();
+}
+
+// export async function getComments() {}

@@ -1,16 +1,18 @@
 /* Imports */
 //import '../auth/user.js';
 
-import { getPost, getUser } from '../fetch-utils.js';
+import { getPost, createComment /*getUser*/ } from '../fetch-utils.js';
 
 /* DOM */
 const errorDisplay = document.getElementById('error-display');
 const postDescription = document.getElementById('post-description');
-const addComment = document.getElementById('add-comment');
+const addCommentForm = document.getElementById('add-comment');
 
 /* State */
 let post = null;
 let error = null;
+
+// let user = getUser();
 
 /* Events */
 window.addEventListener('load', async () => {
@@ -33,7 +35,22 @@ window.addEventListener('load', async () => {
     }
 });
 
-// ADD COMMENT EVENT LISTENER
+addCommentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(addCommentForm);
+    const insertComment = {
+        description: formData.get('text'),
+        post_id: post.id,
+    };
+
+    const response = await createComment(insertComment);
+    error = response.error;
+    if (error) {
+        displayError();
+    } else {
+        displayPost();
+    }
+});
 
 /* Display */
 function displayError() {
@@ -48,3 +65,10 @@ function displayError() {
 function displayPost() {
     postDescription.textContent = post.description;
 }
+
+// function displayComments() {
+//     commentList.innerHTML = '';
+
+//     for (const comment of comments() {
+//     })
+// }
