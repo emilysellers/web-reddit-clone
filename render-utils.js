@@ -1,9 +1,13 @@
 export function renderPost(post) {
     const li = document.createElement('li');
 
+    const a = document.createElement('a');
+    a.href = `/post-detail/?id=${post.id}`;
+
     const p = document.createElement('p');
     p.textContent = post.description;
 
-    li.append(p);
+    a.append(p);
+    li.append(a);
     return li;
 }

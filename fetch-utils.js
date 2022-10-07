@@ -35,3 +35,7 @@ export async function createPost(post) {
 export async function getPosts() {
     return await client.from('reddits').select('*');
 }
+
+export async function getPost(id) {
+    return await client.from('reddits').select('*').eq('id', id).single();
+}
