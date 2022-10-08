@@ -1,18 +1,20 @@
 /* Imports */
-//import '../auth/user.js';
+import '../auth/user.js';
 
 import { getPost, createComment /*getUser*/ } from '../fetch-utils.js';
+import { renderComment } from '../render-utils.js';
 
 /* DOM */
 const errorDisplay = document.getElementById('error-display');
 const postDescription = document.getElementById('post-description');
 const addCommentForm = document.getElementById('add-comment');
+const commentList = document.getElementById('comment-list');
 
 /* State */
 let post = null;
 let error = null;
 
-// let user = getUser();
+//let user = getUser();
 
 /* Events */
 window.addEventListener('load', async () => {
@@ -29,9 +31,10 @@ window.addEventListener('load', async () => {
     post = response.data;
 
     if (error) {
-        displayError();
+        location.replace('/');
     } else {
         displayPost();
+        displayComments();
     }
 });
 
@@ -48,7 +51,10 @@ addCommentForm.addEventListener('submit', async (e) => {
     if (error) {
         displayError();
     } else {
-        displayPost();
+        const comment = response.data;
+        post.comments.unshift(comment);
+        displayComments();
+        addCommentForm.reset();
     }
 });
 
@@ -66,9 +72,11 @@ function displayPost() {
     postDescription.textContent = post.description;
 }
 
-// function displayComments() {
-//     commentList.innerHTML = '';
+function displayComments() {
+    commentList.innerHTML = '';
 
-//     for (const comment of comments() {
-//     })
-// }
+    for (const comment of post.comments) {
+        const commentEl = renderComment(comment);
+        commentList.append(commentEl);
+    }
+}
