@@ -4,7 +4,7 @@ form:not(.inline) {
     max-width: 500px;
     border: 1px solid;
     background: var(--offset-color);
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(255, 255, 255);
     padding: 20px;
 
     display: grid;

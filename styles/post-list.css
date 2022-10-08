@@ -7,21 +7,29 @@ footer {
     font-size: 0.8em;
 }
 
-a:link {
-    text-decoration: none;
-    color: grey;
-}
-
 #post-list {
     display: grid;
-    grid-auto-rows: 400px;
+    grid-auto-rows: 200px;
     gap: 20px;
     width: 600px;
     padding: 1.2em;
 }
 
 li {
-    border: 1px solid black;
+    border: 1px solid rgb(88, 88, 88);
     background-color: white;
+    padding: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+}
+
+li:hover {
+    box-shadow: var(--box-shadow-hover);
+}
+
+li a {
+    text-decoration: none;
+    color: initial;
+    cursor: pointer;
 }
